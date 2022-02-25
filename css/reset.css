@@ -24,7 +24,6 @@ html:focus-within {
 /* Set core body defaults */
 body {
   min-block-size: 100vh;
-  /* min-inline-size: var(--min-inline-size); */
   text-rendering: optimizeSpeed;
 }
 
@@ -46,7 +45,7 @@ main:focus {
 /* Make images easier to work with */
 img,
 picture {
-  max-inline-size: max(50rem, 100%);
+  max-inline-size: max(70ch, 100%);
   display: block;
 }
 
