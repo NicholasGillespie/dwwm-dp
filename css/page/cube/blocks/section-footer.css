@@ -1,0 +1,5 @@
+.section-footer {
+  border-block-start: var(--border);
+  padding: var(--padding-composition);
+  --space-stack: var(--padding-composition);
+}

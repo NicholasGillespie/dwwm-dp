@@ -1,0 +1,64 @@
+/* Root */
+:root {
+  /* Font-family */
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+  --font-serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol;
+  --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+
+  /* Modular scale */
+  /* 1em | 0.75em  | 0.563em | 0.422em | 0.317em | 0.238em */
+  /* 1em | 1.333em | 1.777em | 2.369em | 3.157em | 4.209em */
+  --ratio: 1.333;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+
+  /* Sizes */
+  --max-inline-size: 1080px;
+  --min-inline-size: 200px;
+  --line-height: 1.5;
+
+  /* Paddings */
+  --padding-composition: var(--s2);
+  --padding-box: var(--s1);
+  --padding-element: var(--s0);
+
+  /* Colors */
+  --color-light: hsla(360, 100%, 100%, 1);
+  --color-mid: hsla(0, 0%, 50%, 1);
+  --color-dark: hsla(0, 0%, 0%, 1);
+  --color-accent: hsla(360, 100%, 50%, 1);
+  --color-accent-shade: hsla(360, 100%, 45%, 1);
+
+  /* Colors inversed */
+  /* --color-dark: hsla(360, 100%, 100%, 1);
+  --color-light: hsla(0, 0%, 0%, 1); */
+
+  /* border */
+  /* border - box */
+  --border-color: var(--color-dark);
+  --border-style: solid;
+  --border-width: 2px;
+  --border: var(--border-color) var(--border-style) var(--border-width);
+  --border-radius: none;
+
+  /* focus */
+  --focus-outline-offset: var(--s-5);
+  --focus-outline-color: var(--color-mid);
+  --focus-outline-style: solid;
+  --focus-outline-width: var(--border-width);
+  --focus-outline: var(--focus-outline-color) var(--focus-outline-style)
+    var(--focus-outline-width);
+}
