@@ -7,16 +7,10 @@ require 'includes/url.php';
 $conn = getDB();
 
 if (isset($_GET['id'])) {
-  $article = getArticle($conn, $_GET['id']);
+  $article = getArticle($conn, $_GET['id'], 'id');
 
   if ($article) {
     $id = $article['id'];
-    $title = $article['title'];
-    $content = $article['content'];
-    $published_at = $article['published_at'];
-
-    $formatted_published_at = str_replace(' ', 'T', $published_at);
-    $published_at = substr($formatted_published_at, 0, -3);
   } else {
     die("article not found");
   }
