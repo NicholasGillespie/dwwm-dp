@@ -1,0 +1,93 @@
+/* global style
+/* **************************************** */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0 solid;
+  word-break: break-word;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-inline-size: var(--min-inline-size);
+  overflow-x: hidden;
+  background: var(--color-light);
+  color: var(--color-dark);
+  line-height: var(--line-height);
+  font-family: Georgia, var(--font-serif);
+  /* font-size: calc(var(--s0) + 0.333vw); */
+}
+
+:is(h1, h2, h3, h4) {
+  font-family: var(--font-sans-serif);
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a[role="link"] {
+  display: inline-block;
+}
+
+a[role="link"] + a[role="link"],
+a[role="link"] + button {
+  margin-inline-start: var(--padding-element-small);
+}
+
+/* global layout
+/* **************************************** */
+:is(header, footer) {
+  padding: var(--padding-composition);
+}
+
+header {
+  border-block-end: var(--border);
+}
+
+footer {
+  border-block-start: var(--border);
+}
+
+button {
+  padding: var(--padding-element-small);
+  border: var(--border);
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  cursor: pointer;
+}
+
+/* page home
+/* **************************************** */
+.box ~ .frame {
+  border-block-end: none;
+}
+
+article time {
+  --space-flow: 0;
+}
+
+article time ~ p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+
+/* page article-create
+/* **************************************** */
+textarea {
+  resize: none;
+}
+
+:is(input, textarea) {
+  border: var(--border);
+  padding: var(--s-3);
+}

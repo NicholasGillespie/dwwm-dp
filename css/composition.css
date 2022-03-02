@@ -1,0 +1,144 @@
+/* box
+/* **************************************** */
+.box {
+  padding: var(--padding-box);
+  border: var(--border);
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+.box * {
+  color: inherit;
+}
+
+.box.invert {
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+
+/* cluster
+/* **************************************** */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  --justify: flex-start;
+  justify-content: var(--justify);
+  align-items: center;
+}
+
+/* container
+/* **************************************** */
+.container {
+  padding-inline: max(
+    var(--padding-composition),
+    50vw - var(--max-inline-size) / 2
+  );
+  padding-block: var(--padding-composition);
+}
+
+/* cover
+/* **************************************** */
+/* .cover {
+  display: flex;
+  flex-direction: column;
+  min-block-size: min(600px, 50vh);
+  padding: var(--padding-composition);
+}
+
+.cover > :first-child:not(centered) {
+  margin-block-end: var(--padding-composition);
+}
+
+.cover > :last-child:not(centered) {
+  margin-block-start: var(--padding-composition);
+}
+
+.cover > .centered {
+  margin-block: auto;
+  margin-inline: auto;
+  text-align: center;
+} */
+
+/* frame
+/* **************************************** */
+.frame {
+  aspect-ratio: var(--w) / var(--h);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-mid);
+}
+
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  max-inline-size: max(70ch, 100%);
+}
+
+.ar-16\:9 {
+  --w: 16;
+  --h: 9;
+}
+
+.ar-4\:3 {
+  --w: 4;
+  --h: 3;
+}
+
+.ar-1\:1 {
+  --w: 1;
+  --h: 1;
+}
+
+/* grid
+/* **************************************** */
+.grid {
+  display: grid;
+  grid-gap: var(--padding-composition);
+}
+
+@supports (width: min(250px, 100%)) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  }
+}
+
+/* sidebar
+/* **************************************** */
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--padding-composition);
+}
+
+.sidebar > :last-child {
+  flex-basis: 20rem;
+  flex-grow: 1;
+}
+
+.sidebar > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+}
+
+/* stack
+/* **************************************** */
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  --space-stack: 1rem;
+  margin-block-start: var(--space-stack, 1rem);
+}

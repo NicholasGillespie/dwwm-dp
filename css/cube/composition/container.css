@@ -1,6 +1,0 @@
-.container {
-  padding-inline: max(
-    var(--padding-composition),
-    50vw - var(--max-inline-size) / 2
-  );
-}

@@ -1,0 +1,40 @@
+/* flex:column
+/* **************************************** */
+.flex\:column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* flow
+/* **************************************** */
+.flow > * + * {
+  margin-block-start: var(--space-flow, 1em);
+}
+
+/* justify:space-between
+/* **************************************** */
+.justify\:space-between {
+  --justify: space-between;
+}
+
+/* order
+/* **************************************** */
+.order\:-1 {
+  --order: -1;
+  order: var(--order);
+}
+
+/* space-stack
+/* **************************************** */
+.space-stack\:composition {
+  --space-stack: var(--padding-composition);
+}
+.space-stack\:box {
+  --space-stack: var(--padding-box);
+}
+.space-stack\:element {
+  --space-stack: var(--padding-element);
+}
+.space-stack\:element-small {
+  --space-stack: var(--padding-element-small);
+}

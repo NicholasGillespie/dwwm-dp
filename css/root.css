@@ -34,6 +34,7 @@
   --padding-composition: var(--s2);
   --padding-box: var(--s1);
   --padding-element: var(--s0);
+  --padding-element-small: var(--s-2);
 
   /* Colors */
   --color-light: hsla(360, 100%, 100%, 1);

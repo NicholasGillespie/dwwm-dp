@@ -1,19 +1,14 @@
 <?php
 
-require 'include/database.php';
+require 'includes/database.php';
+require 'includes/article.php';
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-  $sql = "SELECT * 
-        FROM article 
-        WHERE id = " . $_GET['id'];
+$conn = getDB();
 
-  $results = mysqli_query($conn, $sql);
+if (isset($_GET['id'])) {
+  $article = getArticle($conn, $_GET['id']);
 
-  if ($results === false) {
-    echo mysqli_error($conn);
-  } else {
-    $article = mysqli_fetch_assoc($results);
-  }
+  $datetime_array = getDateTime($article);
 } else {
   $article = null;
 }
@@ -21,30 +16,22 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 ?>
 
 <!-- header -->
-<?php require 'include/tpl/tpl-header-global.php'; ?>
+<?php require 'includes/header.php'; ?>
 
 <!-- main -->
-<div class="[ container ][ section-main ]">
-  <main class="stack">
-    <?php if ($article === null) : ?>
-      <h3>No articles found.</h3>
-    <?php else : ?>
-      <article class="flex">
-        <div class="[ flow ][ article__content ]">
-          <h2><?= $article['title']; ?></h2>
-          <time datetime="2018-07-07"><?= $article['published_at']; ?></time>
-          <div class="[ frame ar-16:9 ]"></div>
-          <p><?= $article['content']; ?></p>
-        </div>
-      </article>
-    <?php endif; ?>
-    <ul role="list" class="[ cluster ][ paginator ]">
-      <li><a href="article.php?id=<?= $_GET['id'] - 1 ?>">previous</a></li>
-      <li><a href="article.php?id=<?= $_GET['id'] + 1 ?>">next</a></li>
-    </ul>
-  </main>
+<div class="[ container ][ flow ]">
+  <?php if ($article === null) : ?>
+    <p>Article not found.</p>
+  <?php else : ?>
+    <article class="flow">
+      <h2><?= htmlspecialchars($article['title']); ?></h2>
+      <time datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[1]); ?></time>
+      <p><?= htmlspecialchars($article['content']); ?></p>
+      <a role="link" href="article-update.php?id=<?= $article['id'] ?>">Edit</a>
+      <a role="link" href="article-delete.php?id=<?= $article['id'] ?>">Delete</a>
+    </article>
+  <?php endif; ?>
 </div>
 
-
 <!-- footer -->
-<?php require 'include/tpl/tpl-footer.php'; ?>
+<?php require 'includes/footer.php'; ?>
