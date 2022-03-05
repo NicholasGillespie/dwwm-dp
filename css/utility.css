@@ -38,3 +38,15 @@
 .space-stack\:element-small {
   --space-stack: var(--padding-element-small);
 }
+
+/* text-align:center
+/* **************************************** */
+.text-align\:center {
+  text-align: center;
+}
+
+/* danger
+/* **************************************** */
+.danger {
+  color: red;
+}

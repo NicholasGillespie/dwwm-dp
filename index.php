@@ -1,25 +1,16 @@
 <?php
 
-require 'includes/database.php';
-require 'includes/article.php';
+require 'includes/init.php';
 
-$conn = getDB();
+$conn = require 'includes/db.php';
 
-$sql = "SELECT *
-        FROM article
-        ORDER BY published_at DESC;";
-
-$results = mysqli_query($conn, $sql);
-
-if ($results === false) {
-  echo mysqli_error($conn);
-} else {
-  $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
-}
+$articles = Article::getAll($conn);
 
 ?>
+
 <!-- header -->
 <?php require 'includes/header.php'; ?>
+
 
 <!-- main -->
 <div class="container">
@@ -33,12 +24,11 @@ if ($results === false) {
       <?php else : ?>
         <ul role="list" class="grid">
           <?php foreach ($articles as $article) : ?>
-            <?php $datetime_array = getDateTime($article); ?>
             <li>
               <article class="flex:column">
                 <div class="[ box ][ flex:column flow ]">
                   <h3><a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a></h3>
-                  <time class="order:-1" datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[2]); ?></time>
+                  <!-- <time class="order:-1" datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[2]); ?></time> -->
                   <p><?= htmlspecialchars($article['content']); ?></p>
                 </div>
                 <div class="[ box frame ar-16:9 ][ order:-1 ]"></div>
@@ -62,6 +52,7 @@ if ($results === false) {
     </aside>
   </div>
 </div>
+
 
 <!-- footer -->
 <?php require 'includes/footer.php'; ?>

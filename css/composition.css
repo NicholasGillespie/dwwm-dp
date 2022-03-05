@@ -37,29 +37,6 @@
   padding-block: var(--padding-composition);
 }
 
-/* cover
-/* **************************************** */
-/* .cover {
-  display: flex;
-  flex-direction: column;
-  min-block-size: min(600px, 50vh);
-  padding: var(--padding-composition);
-}
-
-.cover > :first-child:not(centered) {
-  margin-block-end: var(--padding-composition);
-}
-
-.cover > :last-child:not(centered) {
-  margin-block-start: var(--padding-composition);
-}
-
-.cover > .centered {
-  margin-block: auto;
-  margin-inline: auto;
-  text-align: center;
-} */
-
 /* frame
 /* **************************************** */
 .frame {

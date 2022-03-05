@@ -1,14 +1,11 @@
 <?php
 
-require 'includes/database.php';
-require 'includes/article.php';
+require 'includes/init.php';
 
-$conn = getDB();
+$conn = require 'includes/db.php';
 
 if (isset($_GET['id'])) {
-  $article = getArticle($conn, $_GET['id']);
-
-  $datetime_array = getDateTime($article);
+  $article = Article::getByID($conn, $_GET['id']);
 } else {
   $article = null;
 }
@@ -18,20 +15,20 @@ if (isset($_GET['id'])) {
 <!-- header -->
 <?php require 'includes/header.php'; ?>
 
+
 <!-- main -->
 <div class="[ container ][ flow ]">
-  <?php if ($article === null) : ?>
-    <p>Article not found.</p>
-  <?php else : ?>
+  <?php if ($article) : ?>
     <article class="flow">
-      <h2><?= htmlspecialchars($article['title']); ?></h2>
-      <time datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[1]); ?></time>
-      <p><?= htmlspecialchars($article['content']); ?></p>
-      <a role="link" href="article-update.php?id=<?= $article['id'] ?>">Edit</a>
-      <a role="link" href="article-delete.php?id=<?= $article['id'] ?>">Delete</a>
+      <h2><?= htmlspecialchars($article->title); ?></h2>
+      <!-- <time datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[1]); ?></time> -->
+      <p><?= htmlspecialchars($article->content); ?></p>
     </article>
+  <?php else : ?>
+    <p>Article not found.</p>
   <?php endif; ?>
 </div>
+
 
 <!-- footer -->
 <?php require 'includes/footer.php'; ?>
