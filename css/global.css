@@ -64,6 +64,27 @@ button {
   cursor: pointer;
 }
 
+:is(table, td, th) {
+  border-collapse: collapse;
+  border-color: var(--color-grey-dark);
+  border-style: var(--border-style);
+  border-width: 1px;
+  padding: var(--padding-box);
+  text-align: left;
+}
+
+thead {
+  background-color: var(--color-grey-light);
+}
+
+th {
+  border: none;
+}
+
+th + th {
+  text-align: right;
+}
+
 /* page home
 /* **************************************** */
 .box ~ .frame {
@@ -74,7 +95,8 @@ article time {
   --space-flow: 0;
 }
 
-article time ~ p {
+/* article time ~ p { */
+article p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;

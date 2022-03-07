@@ -4,7 +4,14 @@ require 'includes/init.php';
 
 $conn = require 'includes/db.php';
 
-$articles = Article::getAll($conn);
+// $page
+// $records_per_page
+// $total_articles
+$paginator = new Paginator($_GET['page'] ?? 1, 6, Article::getTotal($conn));
+
+// $paginator->limit = $records_per_page; 
+// $paginator->offset = $records_per_page * ($page - 1);
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 ?>
 
@@ -22,7 +29,7 @@ $articles = Article::getAll($conn);
       <?php if (empty($articles)) : ?>
         <h3>No articles found.</h3>
       <?php else : ?>
-        <ul role="list" class="grid">
+        <ul role="list" class="[ grid ][ space-stack:composition ]">
           <?php foreach ($articles as $article) : ?>
             <li>
               <article class="flex:column">
@@ -37,16 +44,13 @@ $articles = Article::getAll($conn);
           <?php endforeach; ?>
         </ul>
       <?php endif; ?>
-      <ul role="list" class="cluster">
-        <li><a href="#">previous</a></li>
-        <li><a href="#">next</a></li>
-      </ul>
+      <?php require 'includes/pagination.php'; ?>
     </main>
     <aside class="stack">
       <div class="box">
         <h2>header aside</h2>
       </div>
-      <div class="box">
+      <div class="[ box ][ space-stack:composition ]">
         empty
       </div>
     </aside>
