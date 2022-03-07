@@ -26,6 +26,7 @@ if (isset($_GET['id'])) {
             <!-- <time datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[1]); ?></time> -->
             <p><?= htmlspecialchars($article->content); ?></p>
             <a role="link" href="article-update.php?id=<?= $article->id; ?>">Edit</a>
+            <a role="link" href="article-update-img.php?id=<?= $article->id; ?>">Edit image</a>
             <a role="link" href="article-delete.php?id=<?= $article->id; ?>">Delete</a>
         </article>
     <?php else : ?>
