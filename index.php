@@ -4,7 +4,14 @@ require 'includes/init.php';
 
 $conn = require 'includes/db.php';
 
-$articles = Article::getAll($conn);
+// $page
+// $records_per_page
+// $total_articles
+$paginator = new Paginator($_GET['page'] ?? 1, 6, Article::getTotal($conn));
+
+// $paginator->limit = $records_per_page; 
+// $paginator->offset = $records_per_page * ($page - 1);
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 ?>
 
@@ -37,10 +44,22 @@ $articles = Article::getAll($conn);
           <?php endforeach; ?>
         </ul>
       <?php endif; ?>
-      <ul role="list" class="cluster">
-        <li><a href="#">previous</a></li>
-        <li><a href="#">next</a></li>
-      </ul>
+      <div class="cluster justify:space-between">
+        <?= var_dump($paginator); ?>
+        <p>Page ? / <?= $paginator->total_pages; ?></p>
+        <nav>
+          <ul role="list" class="cluster">
+            <?php if ($paginator->previous) : ?>
+              <li><a href="?page=<?= $paginator->previous; ?>">previous</a></li>
+            <?php else : ?>
+            <?php endif; ?>
+            <?php if ($paginator->next) : ?>
+              <li><a href="?page=<?= $paginator->next; ?>">next</a></li>
+            <?php else : ?>
+            <?php endif; ?>
+          </ul>
+        </nav>
+      </div>
     </main>
     <aside class="stack">
       <div class="box">

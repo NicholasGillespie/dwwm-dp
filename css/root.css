@@ -38,6 +38,8 @@
 
   /* Colors */
   --color-light: hsla(360, 100%, 100%, 1);
+  --color-grey-light: hsl(210, 29%, 97%);
+  --color-grey-dark: hsl(210, 18%, 84%);
   --color-mid: hsla(0, 0%, 50%, 1);
   --color-dark: hsla(0, 0%, 0%, 1);
   --color-accent: hsla(360, 100%, 50%, 1);

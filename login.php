@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     Auth::login();
 
-    Url::redirect('/');
+    Url::redirect('/admin/');
   } else {
 
     $error = "Invalid username or password." . "<br>" . "Access denied.";

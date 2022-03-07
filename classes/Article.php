@@ -11,13 +11,9 @@ class Article
   public $title;
   public $content;
   public $published_at;
-
   public $errors = [];
 
-  /**
-   * Get all the articles
-   * @param object $conn Connection to the database
-   * @return array An associative array of all the article records */
+
 
   public static function getAll($conn)
   {
@@ -31,12 +27,34 @@ class Article
   }
 
 
-  /**
-   * Get the article record based on the ID
-   * @param object $conn Connection to the database
-   * @param integer $id the article ID
-   * @param string $columns Optional list of columns for the select, defaults to *
-   * @return mixed An object of this class, or null if not found */
+
+  public static function getPage($conn, $limit, $offset)
+  {
+    $sql = "SELECT *
+            FROM article
+            ORDER BY published_at
+            LIMIT :limit
+            OFFSET :offset";
+
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
+
+  public  static function getTotal($conn)
+  {
+    return $conn->query('SELECT COUNT(*) FROM article')->fetchColumn();
+    //fetchColumn = returns a single column from the next row of a result set
+  }
+
+
 
   public static function getByID($conn, $id, $columns = '*')
   {
@@ -56,9 +74,7 @@ class Article
   }
 
 
-  /**
-   * Validate the properties, putting any validation error messages in the $errors property
-   * @return boolean True if the current properties are valid, false otherwise */
+
   protected function validate()
   {
     if ($this->title == '') {
@@ -87,10 +103,7 @@ class Article
   }
 
 
-  /**
-   * Insert a new article with its current property values
-   * @param object $conn Connection to the database
-   * @return boolean True if the insert was successful, false otherwise */
+
   public function create($conn)
   {
     if ($this->validate()) {
@@ -119,10 +132,6 @@ class Article
   }
 
 
-  /**
-   * Update the article with its current property values
-   * @param object $conn Connection to the database
-   * @return boolean True if the update was successful, false otherwise */
 
   public function update($conn)
   {
@@ -153,10 +162,7 @@ class Article
   }
 
 
-  /**
-   * Delete the current article
-   * @param object $conn Connection to the database
-   * @return boolean True if the delete was successful, false otherwise */
+
   public function delete($conn)
   {
     $sql = "DELETE FROM article

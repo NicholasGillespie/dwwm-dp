@@ -6,7 +6,9 @@ Auth::requireLogin();
 
 $conn = require '../includes/db.php';
 
-$articles = Article::getAll($conn);
+$paginator = new Paginator($_GET['page'] ?? 1, 10, Article::getTotal($conn));
+
+$articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
 ?>
 
@@ -16,19 +18,21 @@ $articles = Article::getAll($conn);
 
 <!-- main -->
 <div class="container stack">
-  <h2>administration</h2>
-  <a href="article-create.php">create article</a>
+  <div>
+    <h2>administration</h2>
+  </div>
   <?php if (empty($articles)) : ?>
     <h3>No articles found.</h3>
   <?php else : ?>
-    <table>
+    <table class="space-stack:element">
       <thead>
         <th>title</th>
+        <th><a href="article-create.php">create article</a></th>
       </thead>
       <tbody>
         <?php foreach ($articles as $article) : ?>
           <tr>
-            <td>
+            <td colspan="2">
               <a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a>
             </td>
           </tr>
@@ -36,6 +40,18 @@ $articles = Article::getAll($conn);
       </tbody>
     </table>
   <?php endif; ?>
+  <nav>
+    <ul role="list" class="cluster">
+      <?php if ($paginator->previous) : ?>
+        <li><a href="?page=<?= $paginator->previous; ?>">previous</a></li>
+      <?php else : ?>
+      <?php endif; ?>
+      <?php if ($paginator->next) : ?>
+        <li><a href="?page=<?= $paginator->next; ?>">next</a></li>
+      <?php else : ?>
+      <?php endif; ?>
+    </ul>
+  </nav>
 </div>
 
 
