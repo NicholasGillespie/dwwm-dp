@@ -29,7 +29,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
       <?php if (empty($articles)) : ?>
         <h3>No articles found.</h3>
       <?php else : ?>
-        <ul role="list" class="grid">
+        <ul role="list" class="[ grid ][ space-stack:composition ]">
           <?php foreach ($articles as $article) : ?>
             <li>
               <article class="flex:column">
@@ -44,28 +44,13 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
           <?php endforeach; ?>
         </ul>
       <?php endif; ?>
-      <div class="cluster justify:space-between">
-        <?= var_dump($paginator); ?>
-        <p>Page ? / <?= $paginator->total_pages; ?></p>
-        <nav>
-          <ul role="list" class="cluster">
-            <?php if ($paginator->previous) : ?>
-              <li><a href="?page=<?= $paginator->previous; ?>">previous</a></li>
-            <?php else : ?>
-            <?php endif; ?>
-            <?php if ($paginator->next) : ?>
-              <li><a href="?page=<?= $paginator->next; ?>">next</a></li>
-            <?php else : ?>
-            <?php endif; ?>
-          </ul>
-        </nav>
-      </div>
+      <?php require 'includes/pagination.php'; ?>
     </main>
     <aside class="stack">
       <div class="box">
         <h2>header aside</h2>
       </div>
-      <div class="box">
+      <div class="[ box ][ space-stack:composition ]">
         empty
       </div>
     </aside>

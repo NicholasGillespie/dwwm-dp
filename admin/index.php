@@ -40,18 +40,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
       </tbody>
     </table>
   <?php endif; ?>
-  <nav>
-    <ul role="list" class="cluster">
-      <?php if ($paginator->previous) : ?>
-        <li><a href="?page=<?= $paginator->previous; ?>">previous</a></li>
-      <?php else : ?>
-      <?php endif; ?>
-      <?php if ($paginator->next) : ?>
-        <li><a href="?page=<?= $paginator->next; ?>">next</a></li>
-      <?php else : ?>
-      <?php endif; ?>
-    </ul>
-  </nav>
+  <?php require '../includes/pagination.php'; ?>
 </div>
 
 

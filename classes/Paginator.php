@@ -8,6 +8,7 @@ class Paginator
   public $previous;
   public $next;
 
+  public $page;
   public $total_pages;
 
   public function __construct($page, $records_per_page, $total_articles)
@@ -16,7 +17,7 @@ class Paginator
 
     // validate int = filter_var -> FILTER_VALIDATE_INT (default, min_range, max_range)
     $options = ['options' => ['default' => 1, 'min_range' => 1]];
-    $page = filter_var($page, FILTER_VALIDATE_INT, $options);
+    $this->page = $page = filter_var($page, FILTER_VALIDATE_INT, $options);
 
     if ($page > 1) {
       $this->previous = $page - 1;
