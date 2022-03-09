@@ -38,7 +38,9 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
                   <!-- <time class="order:-1" datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[2]); ?></time> -->
                   <p><?= htmlspecialchars($article['content']); ?></p>
                 </div>
-                <div class="[ box frame ar-16:9 ][ order:-1 ]"></div>
+                <?php if ($article['image_file']) : ?>
+                  <img class="[ frame ar-16:9 ][ order:-1 ]" src="/uploads/<?= $article['image_file']; ?>" alt="<?= $article['image_file']; ?>">
+                <?php endif; ?>
               </article>
             </li>
           <?php endforeach; ?>
