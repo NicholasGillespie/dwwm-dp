@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   var_dump($_FILES);
 
+  // catching errors + size
   try {
     if (empty($_FILES)) {
       throw new Exception('Invalid upload');
@@ -43,16 +44,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $mime_types = ['image/gif', 'image/png', 'image/jpeg'];
 
+    // create new file info ressource
+    // pass new file info ressource + path of uploaded file
+    // split file path into various parts
+    // select filename
+    // sanitise filename
+    // reconstruct filename + type
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime_type = finfo_file($finfo, $_FILES['file']['tmp_name']);
+    $pathinfo = pathinfo($_FILES['file']['name']);
+    $base = $pathinfo['filename'];
+    $base = preg_replace('/[^a-zA-Z0-9_-]/', '_', $base);
+    $filename = $base . "." . $pathinfo['extension'];
 
-    $destination = "../uploads/" . $_FILES['file']['name'];
+    // create destination path
+    $destination = "../uploads/$filename";
+    // move file to upload folder
     if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
       echo "File uploaded successfully.";
     } else {
       throw new Exception('Unable to move uploaded file');
     }
 
+    // checking mime type
     if (!in_array($mime_type, $mime_types)) {
       throw new Exception('Invalid file type');
     }
