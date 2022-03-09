@@ -49,12 +49,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // split file path into various parts
     // select filename
     // sanitise filename
+    // restrict filename lenght
     // reconstruct filename + type
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime_type = finfo_file($finfo, $_FILES['file']['tmp_name']);
     $pathinfo = pathinfo($_FILES['file']['name']);
     $base = $pathinfo['filename'];
     $base = preg_replace('/[^a-zA-Z0-9_-]/', '_', $base);
+    $base = mb_substr($base, 0, 200);
     $filename = $base . "." . $pathinfo['extension'];
 
     // create destination path
@@ -68,9 +70,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $i++;
     }
 
-    // move file to upload folder
+    // move file to upload folder + database
     if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
-      echo "File uploaded successfully.";
+      if ($article->setImageFile($conn, $filename)) {
+        Url::redirect("/admin/article.php?id={$article->id}");
+      }
     } else {
       throw new Exception('Unable to move uploaded file');
     }
