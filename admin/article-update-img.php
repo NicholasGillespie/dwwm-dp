@@ -19,10 +19,9 @@ if (isset($_GET['id'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  var_dump($_FILES);
-
   // catching errors + size
   try {
+
     if (empty($_FILES)) {
       throw new Exception('Invalid upload');
     }
@@ -38,7 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       default:
         throw new Exception('An error occurred');
     }
+
+    // Restrict the file size
     if ($_FILES['file']['size'] > 1000000) {
+
       throw new Exception('File is too large');
     }
 
@@ -46,13 +48,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // create new file info ressource
     // pass new file info ressource + path of uploaded file
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime_type = finfo_file($finfo, $_FILES['file']['tmp_name']);
+
+    // checking mime type
+    if (!in_array($mime_type, $mime_types)) {
+      throw new Exception('Invalid file type');
+    }
+
     // split file path into various parts
     // select filename
     // sanitise filename
     // restrict filename lenght
     // reconstruct filename + type
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mime_type = finfo_file($finfo, $_FILES['file']['tmp_name']);
     $pathinfo = pathinfo($_FILES['file']['name']);
     $base = $pathinfo['filename'];
     $base = preg_replace('/[^a-zA-Z0-9_-]/', '_', $base);
@@ -72,19 +80,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // move file to upload folder + database
     if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
+
+      // allocate current value of img file attribute to variable
+      $previous_image = $article->image_file;
+
       if ($article->setImageFile($conn, $filename)) {
+
+        if ($previous_image) {
+          unlink("../uploads/$previous_image");
+        }
+
         Url::redirect("/admin/article.php?id={$article->id}");
       }
     } else {
       throw new Exception('Unable to move uploaded file');
     }
-
-    // checking mime type
-    if (!in_array($mime_type, $mime_types)) {
-      throw new Exception('Invalid file type');
-    }
   } catch (Exception $e) {
-    echo $e->getMessage();
+    $error = $e->getMessage();
   }
 }
 
@@ -98,6 +110,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- main -->
 <div class="container stack">
   <h2>Update article image</h2>
+
+  <?php if ($article->image_file) : ?>
+    <img src="/uploads/<?= $article->image_file; ?>">
+    <a href="article-delete-img.php?id=<?= $article->id; ?>">Delete</a>
+  <?php endif; ?>
+
+  <?php if (isset($error)) : ?>
+    <p><?= $error; ?></p>
+  <?php endif; ?>
 
   <form method="post" enctype="multipart/form-data" class="stack">
     <div class="stack">
