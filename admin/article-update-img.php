@@ -46,6 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime_type = finfo_file($finfo, $_FILES['file']['tmp_name']);
 
+    $destination = "../uploads/" . $_FILES['file']['name'];
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
+      echo "File uploaded successfully.";
+    } else {
+      throw new Exception('Unable to move uploaded file');
+    }
+
     if (!in_array($mime_type, $mime_types)) {
       throw new Exception('Invalid file type');
     }
