@@ -22,6 +22,9 @@ if (isset($_GET['id'])) {
     <article class="flow">
       <h2><?= htmlspecialchars($article->title); ?></h2>
       <!-- <time datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[1]); ?></time> -->
+      <?php if ($article->image_file) : ?>
+        <img class="[ frame ar-16:9 ]" src="/uploads/<?= $article->image_file; ?>" alt="<?= $article->image_file; ?>">
+      <?php endif; ?>
       <p><?= htmlspecialchars($article->content); ?></p>
     </article>
   <?php else : ?>

@@ -103,6 +103,16 @@ article p {
   overflow: hidden;
 }
 
+/* page article
+/* **************************************** */
+img {
+  max-inline-size: 70ch;
+  max-block-size: 45ch;
+}
+p {
+  max-inline-size: 70ch;
+}
+
 /* page article-create
 /* **************************************** */
 textarea {
