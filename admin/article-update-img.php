@@ -59,6 +59,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // create destination path
     $destination = "../uploads/$filename";
+
+    // check if file exists. if so rename
+    $i = 1;
+    while (file_exists($destination)) {
+      $filename = $base . "-$i." . $pathinfo['extension'];
+      $destination = "../uploads/$filename";
+      $i++;
+    }
+
     // move file to upload folder
     if (move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
       echo "File uploaded successfully.";
