@@ -56,3 +56,14 @@
 .danger {
   color: red;
 }
+
+/* test
+/* **************************************** */
+.test > * {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  --justify: flex-start;
+  justify-content: var(--justify);
+  align-items: center;
+}

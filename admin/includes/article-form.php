@@ -17,6 +17,19 @@
       <input class="space-stack:element-small" type="datetime-local" name="published_at" id="published_at" value="<?= htmlspecialchars($article->published_at); ?>">
     </div>
   </div>
+
+  <fieldset class="[ stack ][ space-stack:composition ]">
+    <legend>Categories</legend>
+    <div class="[ box cluster ][ space-stack:element-small ]">
+      <?php foreach ($categories as $category) : ?>
+        <div>
+          <label for="category<?= $category['id'] ?>"><?= htmlspecialchars($category['name']) ?></label>
+          <input type="checkbox" name="category[]" value="<?= $category['id'] ?>" id="category<?= $category['id'] ?>" <?php if (in_array($category['id'], $category_ids)) : ?>checked<?php endif; ?>>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </fieldset>
+
   <div class="[ stack ][ space-stack:composition ]">
     <label for="content">Content</label>
     <textarea class="space-stack:element-small" name="content" rows="4" cols="40" id="content" placeholder="Article content"><?= htmlspecialchars($article->content); ?></textarea>

@@ -76,6 +76,44 @@ class Article
 
 
 
+  public static function getWithCategories($conn, $id)
+  {
+    $sql = "SELECT article.*, category.name AS category_name
+            FROM article
+            LEFT JOIN article_category
+            ON article.id = article_category.article_id
+            LEFT JOIN category
+            ON article_category.category_id = category.id
+            WHERE article.id = :id";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
+
+  public function getCategories($conn)
+  {
+    $sql = "SELECT category.*
+            FROM category
+            JOIN article_category
+            ON category.id = article_category.category_id
+            WHERE article_id = :id";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
+
   protected function validate()
   {
     if ($this->title == '') {
@@ -160,6 +198,51 @@ class Article
     } else {
       return false;
     }
+  }
+
+
+
+  public function setCategories($conn, $ids)
+  {
+    if ($ids) {
+
+      $sql = "INSERT IGNORE INTO article_category (article_id, category_id)
+                  VALUES ";
+
+      $values = [];
+
+      foreach ($ids as $id) {
+        $values[] = "({$this->id}, ?)";
+      }
+
+      $sql .= implode(", ", $values);
+
+      $stmt = $conn->prepare($sql);
+
+      foreach ($ids as $i => $id) {
+        $stmt->bindValue($i + 1, $id, PDO::PARAM_INT);
+      }
+
+      $stmt->execute();
+    }
+
+    $sql = "DELETE FROM article_category
+              WHERE article_id = {$this->id}";
+
+    if ($ids) {
+
+      $placeholders = array_fill(0, count($ids), '?');
+
+      $sql .= " AND category_id NOT IN (" . implode(", ", $placeholders) . ")";
+    }
+
+    $stmt = $conn->prepare($sql);
+
+    foreach ($ids as $i => $id) {
+      $stmt->bindValue($i + 1, $id, PDO::PARAM_INT);
+    }
+
+    $stmt->execute();
   }
 
 
