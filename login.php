@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button class="space-stack:composition">Log in</button>
 
     <?php if (!empty($error)) : ?>
-      <p class="text-align:center danger"><?= $error; ?></p>
+      <p class="text-align:center"><?= $error; ?></p>
     <?php endif; ?>
   </form>
 </div>

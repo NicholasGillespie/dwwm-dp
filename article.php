@@ -10,9 +10,6 @@ if (isset($_GET['id'])) {
   $article = null;
 }
 
-// echo "<pre>";
-// var_dump($article);
-
 ?>
 
 <!-- header -->

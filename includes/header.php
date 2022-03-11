@@ -20,6 +20,8 @@
     <nav>
 
       <ul role="list" class="cluster">
+        <li><a href="/">home</a></li>
+        <li><a href="/contact.php">contact</a></li>
         <?php if (Auth::isLoggedIn()) : ?>
           <li><a href="/admin/">admin</a></li>
           <li><a href="/logout.php">logout</a></li>

@@ -207,7 +207,7 @@ class Article
     if ($ids) {
 
       $sql = "INSERT IGNORE INTO article_category (article_id, category_id)
-                  VALUES ";
+              VALUES ";
 
       $values = [];
 
@@ -227,7 +227,7 @@ class Article
     }
 
     $sql = "DELETE FROM article_category
-              WHERE article_id = {$this->id}";
+            WHERE article_id = {$this->id}";
 
     if ($ids) {
 
