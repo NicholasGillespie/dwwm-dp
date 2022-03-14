@@ -28,7 +28,6 @@ if (isset($_GET['id'])) {
           <?php endforeach; ?>
         </p>
       <?php endif; ?>
-      <!-- <time datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[1]); ?></time> -->
       <?php if ($article[0]['image_file']) : ?>
         <img class="[ frame ar-16:9 ]" src="/uploads/<?= $article[0]['image_file']; ?>" alt="<?= $article[0]['image_file']; ?>">
       <?php endif; ?>

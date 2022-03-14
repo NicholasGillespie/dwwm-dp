@@ -35,7 +35,6 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
               <article class="flex:column">
                 <div class="[ box ][ flex:column flow ]">
                   <h3><a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a></h3>
-                  <!-- <time class="order:-1" datetime="<?= htmlspecialchars($datetime_array[0]); ?>"><?= htmlspecialchars($datetime_array[2]); ?></time> -->
                   <p><?= htmlspecialchars($article['content']); ?></p>
                 </div>
                 <?php if ($article['image_file']) : ?>

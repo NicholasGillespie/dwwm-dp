@@ -41,15 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
 
       $mail->isSMTP();
-      $mail->Host = 'smtp.gmail.com';
+      $mail->Host = SMTP_HOST;
       $mail->SMTPAuth = true;
-      $mail->Username = 'username@gmail.com';
-      $mail->Password = 'password';
-      $mail->SMTPSecure = 'tls';
-      $mail->Port = 587;
+      $mail->Username = SMTP_USER;
+      $mail->Password = SMTP_PASS;
+      $mail->SMTPSecure = SMTP_SECURE;
+      $mail->Port = SMTP_PORT;
 
-      $mail->setFrom('username/sender@gmail.com');
-      $mail->addAddress('receiver@gmail.com');
+      $mail->setFrom(SMTP_USER);
+      $mail->addAddress(SMTP_USER);
       $mail->addReplyTo($email);
       $mail->Subject = $subject;
       $mail->Body = $message;
