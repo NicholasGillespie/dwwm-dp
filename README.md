@@ -30,7 +30,7 @@ Nom d'utilisateur par défaut pour l'administrateur : **niko**.
 Mot de passe par défaut pour l'administrateur : **123**.
 
 A savoir : le mot de passe est haché.
-L'authentification est faite à l'aide de la fonction php : _password_verify()_.
+L'authentification est faite à l'aide de la fonction php : [`password_verify()`](https://www.php.net/manual/en/function.password-verify.php).
 
 Si souhaité, vous pouvez changer le nom d'utilisateur 'admin 'directement à même la base de données; voir créer un autre compte. Vous pouvez également changer votre mot de passe, ainsi que le hashé en utilisant un générateur comme celui ci-joint : (https://php-password-hash-online-tool.herokuapp.com/password_hash).
 
