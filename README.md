@@ -36,6 +36,6 @@ Si souhaité, vous pouvez changer le nom d'utilisateur 'admin 'directement à m�
 
 ## Errors
 
-A même [config.php](config.php), si la configuration `SHOW_ERROR_DETAIL` est défini à `true`, un rapport détaillé sera afficher à même le navigateur en cas d'erreurs. Si la configuration est défini à `false`, un message d'erreur générique sera afficher.
+A même [config.php](config.php), si la configuration `SHOW_ERROR_DETAIL` est défini à `true`, un rapport détaillé sera afficher à même le navigateur en cas d'erreurs. Si la configuration est défini à `false`, un message d'erreur générique sera afficher. Mais bon, _normalement_, il ne devrait pas y avoir d'erreur ^^.
 
 ## _That's all folks!_
