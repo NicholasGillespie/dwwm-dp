@@ -7,6 +7,8 @@ Ceci est un _simple_ blog, suivant les principes du **CRUD**, permettant de :
 3.  Mettre à jour toutes les informations si nécessaire des articles.
 4.  Supprimer des articles.
 
+Vous pouvez voir à quoi ressemble la page d'accueil visitant : [home page](wireframe/page_home_desktop.pdf)
+
 Pour info, pour accéder aux options de création, mise à jour et de suppression, il faut être connecté via le panneau d'administration; **nécessitant vérification utilisateur/mots de passe**. _Voir ci-dessous pour plus de détails._
 
 ## Pour commencer à utiliser l'application
