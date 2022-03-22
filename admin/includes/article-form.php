@@ -10,6 +10,7 @@
   <div class="sidebar">
     <div class="stack">
       <label for=" title">Title</label>
+
       <input class="space-stack:element-small" name="title" id="title" placeholder="Article title" value="<?= htmlspecialchars($article->title); ?>">
     </div>
     <div class="[ stack ][ space-stack:composition ]">

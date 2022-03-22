@@ -24,22 +24,20 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
   <?php if (empty($articles)) : ?>
     <h3>No articles found.</h3>
   <?php else : ?>
-    <table class="space-stack:element">
-      <thead>
-        <th>title</th>
-        <th><a href="article-create.php">create article</a></th>
-      </thead>
-      <tbody>
-        <?php foreach ($articles as $article) : ?>
-          <tr>
-            <td colspan="2">
-              <a href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+
+    <div class="[ box cluster ][ justify:space-between ][ tablehead ]">
+      <h2>title</h2>
+      <a href="article-create.php">create article</a>
+    </div>
+    <?php foreach ($articles as $article) : ?>
+      <div class="[ box cluster ][ justify:space-between ]">
+        <a class="absolute" href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a>
+        <?php $datetime = new DateTime($article['published_at']); ?>
+        <time datetime="<?= $datetime->format("Y-m-j"); ?>"><?= $datetime->format("j-M-Y @ G:i"); ?></time>
+      </div>
+    <?php endforeach; ?>
   <?php endif; ?>
+
   <?php require '../includes/pagination.php'; ?>
 </div>
 

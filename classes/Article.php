@@ -8,9 +8,9 @@
 class Article
 {
   public $id;
-  public $title;
-  public $content;
-  public $published_at;
+  public $title = "";
+  public $content = "";
+  public $published_at = "";
   public $image_file;
   public $errors = [];
 

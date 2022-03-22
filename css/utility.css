@@ -51,19 +51,35 @@
   text-align: center;
 }
 
-/* danger
+/* absolute
 /* **************************************** */
-.danger {
-  color: red;
+.absolute::after {
+  position: absolute;
+  content: "";
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
 }
 
-/* test
+/* tablehead
 /* **************************************** */
-.test > * {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space, 1rem);
-  --justify: flex-start;
-  justify-content: var(--justify);
-  align-items: center;
+.tablehead {
+  background-color: var(--color-grey-light);
+}
+.tablehead ~ div {
+  --space-stack: 0rem;
+  border-block-start: none;
+  position: relative;
+}
+.tablehead a {
+  font-weight: bold;
+}
+
+.tablehead ~ div:hover {
+  background-color: var(--color-grey-light);
+}
+
+.tablehead ~ div > :last-child {
+  margin-inline-start: auto;
 }

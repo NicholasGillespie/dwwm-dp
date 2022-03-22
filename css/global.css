@@ -56,6 +56,7 @@ footer {
   border-block-start: var(--border);
 }
 
+.btn,
 button {
   padding: var(--padding-element-small);
   border: var(--border);
@@ -64,31 +65,14 @@ button {
   cursor: pointer;
 }
 
-:is(table, td, th) {
-  border-collapse: collapse;
-  border-color: var(--color-grey-dark);
-  border-style: var(--border-style);
-  border-width: 1px;
-  padding: var(--padding-box);
-  text-align: left;
-}
-
-thead {
-  background-color: var(--color-grey-light);
-}
-
-th {
-  border: none;
-}
-
-th + th {
-  text-align: right;
-}
-
 /* page home
 /* **************************************** */
 .box ~ .frame {
   border-block-end: none;
+}
+
+article {
+  position: relative;
 }
 
 article time {
@@ -124,5 +108,5 @@ textarea {
 }
 
 input[type="file"] {
-  background-color: red;
+  background-color: var(--color-grey-light);
 }
