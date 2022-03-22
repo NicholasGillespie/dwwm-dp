@@ -23,6 +23,8 @@ if (isset($_GET['id'])) {
   <?php if ($article) : ?>
     <article class="flow">
       <h2><?= htmlspecialchars($article[0]['title']); ?></h2>
+      <?php $datetime = new DateTime($article[0]['published_at']); ?>
+      <time datetime="<?= $datetime->format("Y-m-j"); ?>"><?= $datetime->format("j-M-Y @ G:i"); ?></time>
       <?php if ($article[0]['category_name']) : ?>
         <p>Categories:
           <?php foreach ($article as $a) : ?>

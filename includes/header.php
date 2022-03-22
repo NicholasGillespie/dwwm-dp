@@ -24,9 +24,9 @@
         <li><a href="/contact.php">contact</a></li>
         <?php if (Auth::isLoggedIn()) : ?>
           <li><a href="/admin/">admin</a></li>
-          <li><a href="/logout.php">logout</a></li>
+          <li><a class="btn" href="/logout.php">logout</a></li>
         <?php else : ?>
-          <li><a href="/login.php">login</a></li>
+          <li><a class="btn" href="/login.php">login</a></li>
         <?php endif; ?>
       </ul>
     </nav>
