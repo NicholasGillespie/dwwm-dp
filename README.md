@@ -13,7 +13,7 @@ Pour info, pour accéder aux options de création, mise à jour et de suppressio
 
 ## Pour commencer à utiliser l'application
 
-1.  Téléchargez l'appli, soit directement, soit en clonant le repo : (https://github.com/NicholasGillespie/dwwm-realisation-dp.git/).
+1.  Téléchargez l'appli, soit directement, soit en clonant le repo : (https://github.com/NicholasGillespie/dwwm-realisation-dp.git).
 2.  A même MySQL/MariaDB, utilisant [query.sql](sql/query.sql), créer une base de données.
 3.  Configurez les données de configuration de votre DB dans le fichier [config.php](config.php) :
     `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`.
@@ -36,6 +36,6 @@ Si souhaité, vous pouvez changer le nom d'utilisateur 'admin 'directement à m�
 
 ## Errors
 
-A même [config.php](config.php), si la configuration `SHOW_ERROR_DETAIL` est défini à `true`, un rapport détaillé sera afficher à même le navigateur en cas d'erreurs. Si la configuration est défini à `false`, un message d'erreur générique sera afficher. Mais bon, _normalement_, il ne devrait pas y avoir d'erreur ^^.
+A même [config.php](config.php), si la configuration `SHOW_ERROR_DETAIL` est défini à `true`, un rapport détaillé sera afficher à même le navigateur en cas d'erreurs. Si la configuration est défini à `false`, un message d'erreur générique sera afficher.
 
 ## _That's all folks!_

@@ -20,6 +20,7 @@ class Auth
   }
 
 
+  // Prevent session fixation attack
   public static function login()
   {
     session_regenerate_id(true);
@@ -32,6 +33,7 @@ class Auth
   {
     $_SESSION = [];
 
+    // https://www.php.net/manual/en/function.session-destroy.php
     if (ini_get("session.use_cookies")) {
       $params = session_get_cookie_params();
 
@@ -45,7 +47,6 @@ class Auth
         $params["httponly"]
       );
     }
-
     session_destroy();
   }
 }

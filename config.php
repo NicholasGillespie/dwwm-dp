@@ -16,4 +16,4 @@ define('SMTP_PASS', 'password');
 
 
 // Error msg -> dev 'true' / prod 'false'
-define('SHOW_ERROR_DETAIL', false);
+define('SHOW_ERROR_DETAIL', true);

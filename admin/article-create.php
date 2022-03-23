@@ -16,7 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $article->title = $_POST['title'];
   $article->content = $_POST['content'];
+
+  $_POST['published_at'] = str_replace('T', ' ', $_POST['published_at']);
   $article->published_at = $_POST['published_at'];
+
   $category_ids = $_POST['category'] ?? [];
 
   if ($article->create($conn)) {

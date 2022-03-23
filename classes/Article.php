@@ -33,7 +33,7 @@ class Article
   {
     $sql = "SELECT *
             FROM article
-            ORDER BY published_at
+            ORDER BY published_at DESC
             LIMIT :limit
             OFFSET :offset";
 
@@ -123,8 +123,13 @@ class Article
       $this->errors[] = 'Content is required';
     }
 
+    $this->published_at = str_replace('T', ' ', $this->published_at);
+    if (strlen($this->published_at) > 16) {
+      $this->published_at = substr($this->published_at, 0, -3);
+    }
+
     if ($this->published_at != '') {
-      $date_time = date_create_from_format('Y-m-d H:i:s', $this->published_at);
+      $date_time = date_create_from_format('Y-m-d H:i', $this->published_at);
 
       if ($date_time === false) {
 

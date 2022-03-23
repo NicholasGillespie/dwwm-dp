@@ -1,3 +1,7 @@
+<?php
+$article->published_at = str_replace(' ', 'T', $article->published_at);
+?>
+
 <?php if (!empty($article->errors)) : ?>
   <ul>
     <?php foreach ($article->errors as $error) : ?>

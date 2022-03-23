@@ -83,3 +83,10 @@
 .tablehead ~ div > :last-child {
   margin-inline-start: auto;
 }
+
+/* tablehead
+/* **************************************** */
+.display\:block {
+  max-inline-size: 70ch;
+  display: block;
+}

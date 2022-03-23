@@ -91,6 +91,8 @@ ul article p {
 img {
   max-inline-size: 70ch;
   max-block-size: 45ch;
+  max-width: 100%;
+  height: auto;
 }
 p {
   max-inline-size: 70ch;
