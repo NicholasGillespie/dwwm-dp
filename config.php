@@ -2,7 +2,7 @@
 
 // database
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'dwwm_realisation_dp');
+define('DB_NAME', 'dwwm_php_pdo_blog');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
