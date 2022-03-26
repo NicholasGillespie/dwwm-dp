@@ -13,7 +13,7 @@ Pour info, pour accéder aux options de création, mise à jour et de suppressio
 
 ## Pour commencer à utiliser l'application
 
-1.  Téléchargez l'appli, soit directement, soit en clonant le repo : (https://github.com/NicholasGillespie/dwwm-realisation-dp.git).
+1.  Téléchargez l'appli, soit directement, soit en clonant le repo : (https://github.com/NicholasGillespie/dwwm-php-pdo-blog.git).
 2.  A même MySQL/MariaDB, utilisant [query.sql](sql/query.sql), créer une base de données.
 3.  Configurez les données de configuration de votre DB dans le fichier [config.php](config.php) :
     `DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`.
