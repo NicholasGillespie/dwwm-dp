@@ -32,14 +32,14 @@ class Database
   }
 }
 
-    // Enclose the code that could cause an exception in a try catch block
-    // Catch block has an argument which is the exception object that is being thrown $e
-    // https://www.php.net/manual/en/class.exception.php
-    // https://www.php.net/manual/en/exception.getmessage.php
-    // $e object will have the ::getMessage method which return the detailed error message of the error that's occured.
+// Enclose the code that could cause an exception in a try catch block
+// Catch block has an argument which is the exception object that is being thrown $e
+// https://www.php.net/manual/en/class.exception.php
+// https://www.php.net/manual/en/exception.getmessage.php
+// $e object will have the ::getMessage method which return the detailed error message of the error that's occured.
 
-    // https://www.php.net/manual/en/pdo.error-handling.php
-    // If error occurs when working with the database an exception is thrown
-    // We set this attribute on the PDO object.
-    // Instead of returning it directly, we assign it to a variable $db
-    // Then set the attribute that throws exceptions and then return the object
+// https://www.php.net/manual/en/pdo.error-handling.php
+// If error occurs when working with the database an exception is thrown
+// We set this attribute on the PDO object.
+// Instead of returning it directly, we assign it to a variable $db
+// Then set the attribute that throws exceptions and then return the object

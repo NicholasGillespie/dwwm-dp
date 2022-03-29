@@ -1,6 +1,7 @@
 <?php
 
 // function to autoload class files
+// (function $...) takes name of Class trying to create as argument
 spl_autoload_register(function ($class) {
   require dirname(__DIR__) . "/classes/{$class}.php";
 });
