@@ -1,5 +1,7 @@
 <?php
-$article->published_at = str_replace(' ', 'T', $article->published_at);
+if (isset($article->published_at)) {
+  $article->published_at = str_replace(' ', 'T', $article->published_at);
+}
 ?>
 
 <?php if (!empty($article->errors)) : ?>
@@ -19,7 +21,11 @@ $article->published_at = str_replace(' ', 'T', $article->published_at);
     </div>
     <div class="[ stack ][ space-stack:composition ]">
       <label for="published_at">Publication date and time</label>
-      <input class="space-stack:element-small" type="datetime-local" name="published_at" id="published_at" value="<?= htmlspecialchars($article->published_at); ?>">
+      <?php if (isset($article->published_at)) : ?>
+        <input class="space-stack:element-small" type="datetime-local" name="published_at" id="published_at" value="<?= htmlspecialchars($article->published_at); ?>">
+      <?php else : ?>
+        <input class="space-stack:element-small" type="datetime-local" name="published_at" id="published_at" value="">
+      <?php endif; ?>
     </div>
   </div>
 

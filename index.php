@@ -35,8 +35,12 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
               <article class="flex:column">
                 <div class="[ box ][ flex:column flow ]">
                   <h3><a class="absolute" href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a></h3>
-                  <?php $datetime = new DateTime($article['published_at']); ?>
-                  <time datetime="<?= $datetime->format("Y-m-j"); ?>"><?= $datetime->format("j-M-Y"); ?></time>
+
+                  <?php if (isset($article['published_at'])) : ?>
+                    <?php $datetime = new DateTime($article['published_at']); ?>
+                    <time datetime="<?= $datetime->format("Y-m-j"); ?>"><?= $datetime->format("j-M-Y"); ?></time>
+                  <?php endif; ?>
+
                   <p><?= htmlspecialchars($article['content']); ?></p>
                 </div>
                 <?php if ($article['image_file']) : ?>

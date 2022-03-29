@@ -1,5 +1,8 @@
 <?php
 
+// PHPMailer is a code library to send emails safely and easily via PHP code from a web server.
+// INFO : https://github.com/PHPMailer/PHPMailer
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 

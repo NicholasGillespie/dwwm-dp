@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Article
- *
- * A piece of writing for publication
- */
 class Article
 {
   public $id;
@@ -49,14 +44,16 @@ class Article
 
 
 
+  // Returns COUNT of total records
   public  static function getTotal($conn)
   {
     return $conn->query('SELECT COUNT(*) FROM article')->fetchColumn();
-    //fetchColumn = returns a single column from the next row of a result set
   }
+  //fetchColumn = returns a single column from the next row of a result set
 
 
 
+  // $columns = '*' enables us to, specify specific columns, optimizing the sql request.
   public static function getByID($conn, $id, $columns = '*')
   {
     $sql = "SELECT $columns

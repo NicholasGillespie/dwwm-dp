@@ -80,8 +80,8 @@
   background-color: var(--color-grey-light);
 }
 
-.tablehead ~ div > :last-child {
-  margin-inline-start: auto;
+.tablehead ~ div > :first-child {
+  margin-inline-end: auto;
 }
 
 /* tablehead
