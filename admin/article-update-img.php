@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           unlink("../uploads/$previous_image");
         }
 
-        Url::redirect("/admin/article.php?id={$article->id}");
+        Url::redirect("/admin/article?id={$article->id}");
       }
     } else {
       throw new Exception('Unable to move uploaded file');
@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <?php if ($article->image_file) : ?>
     <img src="/uploads/<?= $article->image_file; ?>">
-    <a href="article-delete-img.php?id=<?= $article->id; ?>">Delete</a>
+    <a href="article-delete-img?id=<?= $article->id; ?>">Delete</a>
   <?php endif; ?>
 
   <?php if (isset($error)) : ?>

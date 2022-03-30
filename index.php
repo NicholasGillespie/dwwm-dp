@@ -34,7 +34,7 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
             <li>
               <article class="flex:column">
                 <div class="[ box ][ flex:column flow ]">
-                  <h3><a class="absolute" href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a></h3>
+                  <h3><a class="absolute" href="article?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a></h3>
 
                   <?php if (isset($article['published_at'])) : ?>
                     <?php $datetime = new DateTime($article['published_at']); ?>

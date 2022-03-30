@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       unlink("../uploads/$previous_image");
     }
 
-    Url::redirect("/admin/article.php?id={$article->id}");
+    Url::redirect("/admin/article?id={$article->id}");
   }
 }
 
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <form method="post" class="flow">
     <p>Are you sure?</p>
-    <a role="link" href="article-update-img.php?id=<?= $article->id; ?>">Cancel</a>
+    <a role="link" href="article-update-img?id=<?= $article->id; ?>">Cancel</a>
     <button>Delete</button>
   </form>
 </div>

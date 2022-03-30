@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($article->delete($conn)) {
 
-    Url::redirect("/admin/index.php");
+    Url::redirect("/admin/index");
   }
 }
 
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <form method="post" class="flow">
     <p>Are you sure?</p>
-    <a role="link" href="article.php?id=<?= $article->id; ?>">Cancel</a>
+    <a role="link" href="article?id=<?= $article->id; ?>">Cancel</a>
     <button>Delete</button>
   </form>
 </div>
