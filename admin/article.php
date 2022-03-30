@@ -40,9 +40,9 @@ if (isset($_GET['id'])) {
         <img class="[ frame ar-16:9 ]" src="/uploads/<?= $article[0]['image_file']; ?>" alt="<?= $article[0]['image_file']; ?>">
       <?php endif; ?>
       <p><?= htmlspecialchars($article[0]['content']); ?></p>
-      <a role="link" href="article-update.php?id=<?= $article[0]['id']; ?>">Edit</a>
-      <a role="link" href="article-update-img.php?id=<?= $article[0]['id']; ?>">Edit image</a>
-      <a role="link" href="article-delete.php?id=<?= $article[0]['id']; ?>">Delete</a>
+      <a role="link" href="article-update?id=<?= $article[0]['id']; ?>">Edit</a>
+      <a role="link" href="article-update-img?id=<?= $article[0]['id']; ?>">Edit image</a>
+      <a role="link" href="article-delete?id=<?= $article[0]['id']; ?>">Delete</a>
     </article>
   <?php else : ?>
     <p>Article not found.</p>

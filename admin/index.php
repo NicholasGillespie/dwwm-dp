@@ -27,11 +27,11 @@ $articles = Article::getPage($conn, $paginator->limit, $paginator->offset);
 
     <div class="[ box cluster ][ justify:space-between ][ tablehead ]">
       <h2>title</h2>
-      <a href="article-create.php">create article</a>
+      <a href="article-create">create article</a>
     </div>
     <?php foreach ($articles as $article) : ?>
       <div class="[ box cluster ][ justify:space-between ]">
-        <a class="absolute" href="article.php?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a>
+        <a class="absolute" href="article?id=<?= $article['id']; ?>"><?= htmlspecialchars($article['title']); ?></a>
 
         <?php if (isset($article['published_at'])) : ?>
           <?php $datetime = new DateTime($article['published_at']); ?>
