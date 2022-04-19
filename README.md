@@ -7,7 +7,7 @@ Ceci est un _simple_ blog, suivant les principes du **CRUD**, permettant de :
 3.  Mettre à jour toutes les informations si nécessaire des articles.
 4.  Supprimer des articles.
 
-_**Vous trouverez un aperçu du site en bas de cette page**_
+_**Vous trouverez un aperçu du site en bas de cette page.**_
 
 **Pour accéder aux options de création**, mise à jour et de suppression, il faut être connecté via le panneau d'administration; **nécessitant vérification utilisateur/mots de passe**. _Voir ci-dessous pour plus de détails._
 
