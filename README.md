@@ -7,7 +7,7 @@ Ceci est un _simple_ blog, suivant les principes du **CRUD**, permettant de :
 3.  Mettre à jour toutes les informations si nécessaire des articles.
 4.  Supprimer des articles.
 
-_**Vous trouverez un aperçu du site en bas de cette page.**_
+![Webpage screenshot](/uploads/screenshot.jpg)
 
 **Pour accéder aux options de création**, mise à jour et de suppression, il faut être connecté via le panneau d'administration; **nécessitant vérification utilisateur/mots de passe**. _Voir ci-dessous pour plus de détails._
 
@@ -41,8 +41,6 @@ A même [config.php](config.php), si la configuration `SHOW_ERROR_DETAIL` est d�
 ## Mise en page
 
 Focalisé sur les fonctionnalités du blog, le style du site est épuré. La structure du site est 100% algorithmique, signifiant suppression totale des "@media" break-points.
-
-![Webpage screenshot](/uploads/screenshot.jpg)
 
 Si souhaité, vous trouverez les wireframes du site en suivant le lien ci-joint : [wireframe folder](wireframe/)
 
