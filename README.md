@@ -1,4 +1,4 @@
-# Bienvenue à mon projet de fin de formation DWWM
+# Bienvenue à mon projet de fin de formation Développeur Web et Web Mobile
 
 Ceci est un _simple_ blog, suivant les principes du **CRUD**, permettant de :
 
@@ -7,9 +7,9 @@ Ceci est un _simple_ blog, suivant les principes du **CRUD**, permettant de :
 3.  Mettre à jour toutes les informations si nécessaire des articles.
 4.  Supprimer des articles.
 
-Vous pouvez voir à quoi ressemble la page d'accueil visitant : [home page](wireframe/page_home_desktop.pdf)
+_**Vous trouverez un aperçu du site en bas de cette page**_
 
-Pour info, pour accéder aux options de création, mise à jour et de suppression, il faut être connecté via le panneau d'administration; **nécessitant vérification utilisateur/mots de passe**. _Voir ci-dessous pour plus de détails._
+**Pour accéder aux options de création**, mise à jour et de suppression, il faut être connecté via le panneau d'administration; **nécessitant vérification utilisateur/mots de passe**. _Voir ci-dessous pour plus de détails._
 
 ## Pour commencer à utiliser l'application
 
@@ -37,5 +37,13 @@ Si souhaité, vous pouvez changer le nom d'utilisateur 'admin 'directement à m�
 ## Errors
 
 A même [config.php](config.php), si la configuration `SHOW_ERROR_DETAIL` est défini à `true`, un rapport détaillé sera afficher à même le navigateur en cas d'erreurs. Si la configuration est défini à `false`, un message d'erreur générique sera afficher.
+
+## Mise en page
+
+Focalisé sur les fonctionnalités du blog, le style du site est épuré. La structure du site est 100% algorithmique, signifiant suppression totale des "@media" break-points.
+
+![Webpage screenshot](/uploads/screenshot.jpg)
+
+Si souhaité, vous trouverez les wireframes du site en suivant le lien ci-joint : [wireframe folder](wireframe/)
 
 ## _That's all folks!_
